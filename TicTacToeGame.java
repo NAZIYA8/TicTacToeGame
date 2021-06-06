@@ -18,6 +18,7 @@ public class TicTacToeGame {
         }
         System.out.println("Computer is assigned with " + computer);
         showBoard();
+        int position = selectPosition(); //Select user position
     }
 
     /**
@@ -62,6 +63,25 @@ public class TicTacToeGame {
             System.out.println();
             System.out.println("_______");
         }
+    }
+
+    /**
+     * select position between 1 and 10
+     * Ensure the index is free to select
+     *
+     * @return Selected position
+     */
+    static int selectPosition() {
+        System.out.println("Select position between 1 and 10.");
+        int input = scanner.nextInt();
+        if (input < 1 || input > 10) {
+            System.out.println("Invalid input. Must be between 1 and 10.");
+            return selectPosition();
+        } else if (board[input] != ' ') {
+            System.out.println("Cell at position " + input + " is not empty.");
+            return selectPosition();
+        }
+        return input;
     }
 
 }
