@@ -17,6 +17,7 @@ public class TicTacToeGame {
             computer = 'X';
         }
         System.out.println("Computer is assigned with " + computer);
+        showBoard();
     }
 
     /**
@@ -25,6 +26,7 @@ public class TicTacToeGame {
      * 0Th index is ignored
      */
     static void createBoard() {
+        //Initialize board array
         for (int i = 1; i < board.length; i++) {
             board[i] = ' ';
         }
@@ -40,9 +42,27 @@ public class TicTacToeGame {
         System.out.println("Input letter X or O.\n" +
                 "Please not that the letters are case sensitive.");
         char input = scanner.next().charAt(0);
+        if (input != 'X' && input != 'O') {
+            System.out.println("Invalid input.");
+            return takeUserInput();
+        }
         return input;
     }
 
-}
+    /**
+     * Prints a current board
+     */
+    static void showBoard() {
+        System.out.println("_______");
+        for (int i = 1; i < board.length; i += 3) {
+            System.out.print("|");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i + j] + "|");
+            }
+            System.out.println();
+            System.out.println("_______");
+        }
+    }
 
+}
 
